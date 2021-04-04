@@ -1,25 +1,21 @@
-<mat-grid-list cols="1" rowHeight="100px">
-  <mat-grid-tile>
-    <span class="code-text"
-          (mouseenter)="mouseOver(true)"
-          (mouseleave)="mouseOver(false)">
-      {{currentTime // 1000}} seconds
-    </span>
-  </mat-grid-tile>
-  <mat-grid-tile>
-    <span class="code-text"
-          (mouseenter)="mouseOver(true)"
-          (mouseleave)="mouseOver(false)">
-      {{currentTime}} milliseconds
-    </span>
-  </mat-grid-tile>
-  <mat-grid-tile>
-    <span class="code-text"
-          (mouseenter)="mouseOver(true)"
-          (mouseleave)="mouseOver(false)">
-      {{currentTime * 1000}} microseconds
-    </span>
-  </mat-grid-tile>
-  <mat-grid-tile>
-  </mat-grid-tile>
-</mat-grid-list>
+<h1>Time since the Unix Epoch ( {{dateStringForEpoch()}} )</h1>
+<div class="code-text">
+  <span class="time"
+        (mouseenter)="mouseOver(true)"
+        (mouseleave)="mouseOver(false)">{{currentDate.getTime() / 1000}}</span>
+  seconds
+</div>
+
+<div class="code-text">
+  <span class="time"
+        (mouseenter)="mouseOver(true)"
+        (mouseleave)="mouseOver(false)">{{currentDate.getTime()}}</span>
+  milliseconds
+</div>
+
+<div class="code-text">
+  <span class="time"
+        (mouseenter)="mouseOver(true)"
+        (mouseleave)="mouseOver(false)">{{currentDate.getTime() * 1000}}</span>
+  microseconds
+</div>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {TimeService} from '../time.service';
 
 @Component({
   selector: 'app-day',
@@ -6,20 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./day.component.scss']
 })
 export class DayComponent implements OnInit {
-  private readonly timeSinceEpoch: number;
+  private readonly timeService;
   public fullDaysSinceEpoch: number;
   public dateString: string;
 
-  constructor() {
-    this.timeSinceEpoch = new Date().getTime();
-    this.fullDaysSinceEpoch = this.getFullDaysSinceEpoch(this.timeSinceEpoch);
-    this.dateString = new Date(this.timeSinceEpoch).toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+  constructor(timeService: TimeService) {
+    this.timeService = timeService;
+    const date = new Date();
+    this.fullDaysSinceEpoch = timeService.getFullDaysSinceEpoch(date);
+    this.dateString = timeService.getDateString(date);
   }
 
   ngOnInit(): void {
-  }
-
-  getFullDaysSinceEpoch(time: number): number {
-    return Math.floor(time / 8.64e7);
   }
 }
