@@ -1,0 +1,51 @@
+<mat-grid-list cols="1" rowHeight="100px">
+  <mat-grid-tile>
+    <p>
+      The Unix time (Unix timestamp, Unix Epoch time etc) is the number
+      of seconds since 00:000:00 UTC on Jan 1 1970. This date is known as the Unix Epoch.
+      Below you can find the current Unix time in a few different units of time.
+      Hope it's helpful!
+    </p>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <span class="code-text"
+          (mouseenter)="mouseOver(true)"
+          (mouseleave)="mouseOver(false)">
+      {{currentTime // 1000}} seconds
+    </span>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <span class="code-text"
+          (mouseenter)="mouseOver(true)"
+          (mouseleave)="mouseOver(false)">
+      {{currentTime}} milliseconds
+    </span>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <span class="code-text"
+          (mouseenter)="mouseOver(true)"
+          (mouseleave)="mouseOver(false)">
+      {{currentTime * 1000}} microseconds
+    </span>
+  </mat-grid-tile>
+  <mat-grid-tile>
+  </mat-grid-tile>
+</mat-grid-list>
+
+<section layout="row" layout-sm="column" layout-align="end center" layout-wrap>
+  <div layout="row" layout-align="start center" flex>
+    a
+    <span flex></span>
+  </div>
+  b
+  c
+</section>
+
+
+<div>
+
+</div>
+
+<div>
+
+</div>

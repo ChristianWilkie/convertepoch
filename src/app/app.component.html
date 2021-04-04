@@ -1,31 +1,28 @@
+<mat-toolbar color="primary" class="example-toolbar">
+  <button mat-icon-button (click)="drawer.toggle()"><mat-icon>menu</mat-icon></button>
+  <h1>Convert Epoch - Unix Time and Date Conversion</h1>
+</mat-toolbar>
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #drawer class="sidenav" fixedInViewport
+  <mat-sidenav #drawer class="sidenav"
                [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-               [mode]="(isHandset$ | async) ? 'over' : 'side'"
+               [mode]="'side'"
                [opened]="(isHandset$ | async) === false">
-    <mat-toolbar>Menu</mat-toolbar>
-    <mat-nav-list>
-      <a mat-list-item href="#">Link 1</a>
-      <a mat-list-item href="#">Link 2</a>
-      <a mat-list-item href="#">Link 3</a>
+    <mat-nav-list style="padding: 0">
+      <mat-grid-list cols="1" rowHeight="100px">
+        <mat-grid-tile routerLinkActive="active" routerLink="/time">
+          Time
+        </mat-grid-tile>
+        <mat-grid-tile routerLinkActive="active" routerLink="/day">
+          Days
+        </mat-grid-tile>
+        <mat-grid-tile routerLinkActive="active" routerLink="/about">
+          About
+        </mat-grid-tile>
+      </mat-grid-list>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
-    <mat-toolbar color="primary">
-      <button
-        type="button"
-        aria-label="Toggle sidenav"
-        mat-icon-button
-        (click)="drawer.toggle()"
-        *ngIf="isHandset$ | async">
-        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-      </button>
-      <span>Convert Epoch - Free Open-Source Unix Time and Date Utilities</span>
-    </mat-toolbar>
-    <app-current-time></app-current-time>
-
+    <router-outlet></router-outlet>
   </mat-sidenav-content>
-
 </mat-sidenav-container>
 
-<router-outlet></router-outlet>

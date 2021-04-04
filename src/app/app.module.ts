@@ -12,12 +12,23 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
-import { CurrentTimeComponent } from './current-time/current-time.component';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { TimeComponent } from './time/time.component';
+import { DayComponent } from './day/day.component';
+import { registerLocaleData } from '@angular/common';
+import en from '@angular/common/locales/en';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { AboutComponent } from './about/about.component';
+
+registerLocaleData(en);
 
 @NgModule({
   declarations: [
     AppComponent,
-    CurrentTimeComponent,
+    TimeComponent,
+    DayComponent,
+    AboutComponent,
   ],
   imports: [
     BrowserModule,
@@ -29,9 +40,11 @@ import { CurrentTimeComponent } from './current-time/current-time.component';
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
-    MatListModule
+    MatListModule,
+    MatGridListModule,
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

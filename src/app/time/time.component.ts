@@ -3,10 +3,10 @@ import {timer} from 'rxjs';
 
 @Component({
   selector: 'app-current-time',
-  templateUrl: './current-time.component.html',
-  styleUrls: ['./current-time.component.css']
+  templateUrl: './time.component.html',
+  styleUrls: ['./time.component.scss']
 })
-export class CurrentTimeComponent implements OnInit {
+export class TimeComponent implements OnInit {
 
   constructor() { }
 
