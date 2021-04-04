@@ -20,6 +20,7 @@ import en from '@angular/common/locales/en';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AboutComponent } from './about/about.component';
+import { ConvertComponent } from './convert/convert.component';
 
 registerLocaleData(en);
 
@@ -29,6 +30,7 @@ registerLocaleData(en);
     TimeComponent,
     DayComponent,
     AboutComponent,
+    ConvertComponent,
   ],
   imports: [
     BrowserModule,
