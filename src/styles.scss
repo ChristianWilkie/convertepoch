@@ -35,3 +35,6 @@ $accent: map-get($app-theme, accent);
   --color-warn: #{mat-color($app-warn)};
   --color-success: #{mat-color($app-success)};
 }
+
+@import "../node_modules/ag-grid-community/dist/styles/ag-grid.css";
+@import "../node_modules/ag-grid-community/dist/styles/ag-theme-alpine.css";

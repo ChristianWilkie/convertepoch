@@ -1,32 +1,26 @@
-<h1>The Unix Epoch is {{dateStringForEpoch()}} at midnight UTC.</h1>
-
 <div>
   <h1>
-    The time is currently: <code>{{currentDate}}</code>,
+    Current time: <code>{{currentDate}}</code> <app-copy copyText="{{currentDate}}"></app-copy>
   </h1>
 </div>
-<div>
-  <h1>
-    which in Unix time is...
-  </h1>
-</div>
-<div class="code-text">
-  <span class="time"
-        (mouseenter)="mouseOver(true)"
-        (mouseleave)="mouseOver(false)">{{currentDate.getTime() / 1000}}</span>
-  seconds
-</div>
+<h1>
+  <span class="time">{{getCurrentSeconds()}}</span>
+  <app-copy copyText="{{getCurrentSeconds()}}"></app-copy>
+  seconds since Epoch (Unix Epoch Time)
+</h1>
+<h1>
+  <span class="time">{{getCurrentSeconds() * 1000}}</span>
+  <app-copy copyText="{{getCurrentSeconds() * 1000}}"></app-copy>
+  milliseconds since Epoch
+</h1>
+<h1>
+  <span class="time">{{getCurrentSeconds() * 1000 * 1000}}</span>
+  <app-copy copyText="{{getCurrentSeconds() * 1000 * 1000}}"></app-copy>
+  microseconds since Epoch
+</h1>
+<h1>
+  <span class="time">{{fullDaysSinceEpoch}}</span>
+  <app-copy copyText="{{fullDaysSinceEpoch}}"></app-copy>
+  days since Epoch (Unix Epoch Days)
+</h1>
 
-<div class="code-text">
-  <span class="time"
-        (mouseenter)="mouseOver(true)"
-        (mouseleave)="mouseOver(false)">{{currentDate.getTime()}}</span>
-  milliseconds
-</div>
-
-<div class="code-text">
-  <span class="time"
-        (mouseenter)="mouseOver(true)"
-        (mouseleave)="mouseOver(false)">{{currentDate.getTime() * 1000}}</span>
-  microseconds
-</div>

@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AgGridModule } from 'ag-grid-angular';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatSliderModule } from '@angular/material/slider';
@@ -21,6 +22,10 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AboutComponent } from './about/about.component';
 import { ConvertComponent } from './convert/convert.component';
+import { CopyComponent } from './copy/copy.component';
+import { ClipboardModule } from '@angular/cdk/clipboard';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { FloorPipe } from './time-formatter.pipe';
 
 registerLocaleData(en);
 
@@ -31,6 +36,8 @@ registerLocaleData(en);
     DayComponent,
     AboutComponent,
     ConvertComponent,
+    CopyComponent,
+    FloorPipe,
   ],
   imports: [
     BrowserModule,
@@ -45,7 +52,10 @@ registerLocaleData(en);
     MatListModule,
     MatGridListModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ClipboardModule,
+    MatTooltipModule,
+    AgGridModule.withComponents([]),
   ],
   bootstrap: [AppComponent]
 })
