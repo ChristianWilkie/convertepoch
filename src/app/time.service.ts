@@ -6,6 +6,7 @@ import {map, switchMap} from 'rxjs/operators';
   providedIn: 'root'
 })
 export class TimeService {
+  private readonly DAY_IN_MILLISECONDS = 8.64 * (10 ** 7);
   public readonly currentDate$: Observable<Date>;
 
   constructor() {
@@ -19,6 +20,6 @@ export class TimeService {
   }
 
   public getFullDaysSinceEpoch(date: Date): number {
-    return Math.floor(date.getTime() / 8.64e7);
+    return Math.floor(date.getTime() / this.DAY_IN_MILLISECONDS);
   }
 }
