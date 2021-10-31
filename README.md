@@ -13,7 +13,7 @@ Note: this project was generated with [Angular CLI](https://github.com/angular/a
 
 ## Deployment to GH pages
 
-`ng deploy --cname=convertepoch.com`
+`yarn deploy` (which runs `ng deploy --cname=convertepoch.com`)
 
 See also https://www.npmjs.com/package/angular-cli-ghpages#cname
 
