@@ -26,6 +26,8 @@ import { CopyComponent } from './copy/copy.component';
 import { ClipboardModule } from '@angular/cdk/clipboard';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { FloorPipe } from './time-formatter.pipe';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 registerLocaleData(en);
 
@@ -55,6 +57,8 @@ registerLocaleData(en);
     HttpClientModule,
     ClipboardModule,
     MatTooltipModule,
+    MatFormFieldModule,
+    MatInputModule,
     AgGridModule.withComponents([]),
   ],
   bootstrap: [AppComponent]
