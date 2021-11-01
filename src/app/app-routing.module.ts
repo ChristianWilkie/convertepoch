@@ -9,7 +9,7 @@ const routes: Routes = [
   {path: 'time', component: TimeComponent},
   // {path: 'day', component: DayComponent},
   {path: 'about', component: AboutComponent},
-  // {path: 'convert', component: ConvertComponent},
+  {path: 'convert', component: ConvertComponent},
   {path: '', redirectTo: 'time', pathMatch: 'full'},
   {path: '**', redirectTo: 'time'},
 ];
