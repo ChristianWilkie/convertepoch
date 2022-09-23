@@ -6,7 +6,7 @@
   <mat-sidenav #drawer class="sidenav"
                [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
                [mode]="'side'"
-               [opened]="(isHandset$ | async) === false">
+               [opened]="false">
     <mat-nav-list style="padding: 0">
       <mat-grid-list cols="1" rowHeight="100px">
         <mat-grid-tile routerLinkActive="active" routerLink="/time">
