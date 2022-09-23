@@ -1,5 +1,5 @@
+@use '~@angular/material' as mat;
 
-@import '~@angular/material/theming';
 
 .sidenav-container {
   height: 100%;
@@ -30,5 +30,5 @@
 .mat-grid-tile:hover {
   //filter: brightness(80%);
   // Adds a shadow for elevation level 2 with default color and full opacity:
-  @include mat-elevation(5);
+  @include mat.elevation(5);
 }
