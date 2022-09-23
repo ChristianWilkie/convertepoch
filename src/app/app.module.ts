@@ -15,13 +15,11 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { TimeComponent } from './time/time.component';
-import { DayComponent } from './day/day.component';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AboutComponent } from './about/about.component';
-import { ConvertComponent } from './convert/convert.component';
 import { CopyComponent } from './copy/copy.component';
 import { ClipboardModule } from '@angular/cdk/clipboard';
 import { MatTooltipModule } from '@angular/material/tooltip';
@@ -35,9 +33,7 @@ registerLocaleData(en);
   declarations: [
     AppComponent,
     TimeComponent,
-    DayComponent,
     AboutComponent,
-    ConvertComponent,
     CopyComponent,
     FloorPipe,
   ],
