@@ -1,26 +1,31 @@
 <div>
-  <h1>
-    Current time: <code>{{currentDate}}</code> <app-copy copyText="{{currentDate}}"></app-copy>
-  </h1>
-</div>
-<h1>
-  <span class="time">{{getCurrentSeconds()}}</span>
-  <app-copy copyText="{{getCurrentSeconds()}}"></app-copy>
-  seconds since Epoch (Unix Epoch Time)
-</h1>
-<h1>
-  <span class="time">{{getCurrentSeconds() * 1000}}</span>
-  <app-copy copyText="{{getCurrentSeconds() * 1000}}"></app-copy>
-  milliseconds since Epoch
-</h1>
-<h1>
-  <span class="time">{{getCurrentSeconds() * 1000 * 1000}}</span>
-  <app-copy copyText="{{getCurrentSeconds() * 1000 * 1000}}"></app-copy>
-  microseconds since Epoch
-</h1>
-<h1>
-  <span class="time">{{fullDaysSinceEpoch}}</span>
-  <app-copy copyText="{{fullDaysSinceEpoch}}"></app-copy>
-  days since Epoch (Unix Epoch Days)
-</h1>
+  The current time is:
+  <h2>
+    {{currentDate}}
+  </h2>
 
+</div>
+<div>
+  Seconds since epoch:
+  <h2>
+    {{getCurrentSeconds()}} <app-copy copyText="{{getCurrentSeconds()}}"></app-copy>
+  </h2>
+</div>
+<div>
+  Milliseconds since epoch:
+  <h2>
+    {{getCurrentSeconds() * 1000}} <app-copy copyText="{{getCurrentSeconds() * 1000}}"></app-copy>
+  </h2>
+</div>
+<div>
+  Microseconds since epoch:
+  <h2>
+    {{getCurrentSeconds() * 1000 * 1000}} <app-copy copyText="{{getCurrentSeconds() * 1000 * 1000}}"></app-copy>
+  </h2>
+</div>
+<div>
+  Days since epoch:
+  <h2>
+    {{fullDaysSinceEpoch}} <app-copy copyText="{{fullDaysSinceEpoch}}"></app-copy>
+  </h2>
+</div>
