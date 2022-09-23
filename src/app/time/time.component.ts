@@ -1,6 +1,37 @@
 import { Component, OnInit } from '@angular/core';
 import {TimeService} from '../time.service';
+import {MatInputModule} from '@angular/material/input';
 
+class UnixTimeConversion {
+  private readonly DAY_IN_MILLISECONDS: number = 8.64 * (10 ** 7);
+  /**
+   * if the input timestamp > this value, assume the input is milliseconds and not seconds
+   */
+  private readonly UNIX_TIMESTAMP_MS_SWITCH_VALUE: number = 1_000_000_000_000;
+  private readonly UNIX_TIMESTAMP_MICROSECONDS_SWITCH_VALUE: number = 1_000 * this.UNIX_TIMESTAMP_MS_SWITCH_VALUE;
+  public date: Date;
+  public secondsSinceEpoch: number;
+  public milliSecondsSinceEpoch: number;
+  public microSecondsSinceEpoch: number;
+  public daysSinceEpoch: number;
+
+  constructor(secondsSinceEpoch: number) {
+    if (secondsSinceEpoch > this.UNIX_TIMESTAMP_MICROSECONDS_SWITCH_VALUE) {
+      secondsSinceEpoch /= 1_000_000;
+    } else if (secondsSinceEpoch > this.UNIX_TIMESTAMP_MS_SWITCH_VALUE) {
+      secondsSinceEpoch /= 1_000;
+    }
+    this.secondsSinceEpoch = secondsSinceEpoch;
+    this.milliSecondsSinceEpoch = 1000 * this.secondsSinceEpoch;
+    this.date = new Date(this.milliSecondsSinceEpoch);
+    this.microSecondsSinceEpoch = 1000 * this.milliSecondsSinceEpoch;
+    this.daysSinceEpoch = this.getFullDaysSinceEpoch(this.date);
+  }
+
+  private getFullDaysSinceEpoch(date: Date): number {
+    return Math.floor(date.getTime() / this.DAY_IN_MILLISECONDS);
+  }
+}
 
 
 @Component({
@@ -12,6 +43,9 @@ export class TimeComponent implements OnInit {
   public readonly timeService: TimeService;
   public currentDate: Date = new Date();
   public fullDaysSinceEpoch: number;
+  // tslint:disable-next-line:variable-name
+  private _inputEpochString: string;
+  public unixTimeConversion: UnixTimeConversion | null;
 
   public gridOptions = {
     columnDefs: [
@@ -38,8 +72,11 @@ export class TimeComponent implements OnInit {
   ];
 
   constructor(timeService: TimeService) {
+    const currentDate: Date = this.currentDate;
     this.timeService = timeService;
-    this.fullDaysSinceEpoch = timeService.getFullDaysSinceEpoch(this.currentDate);
+    this.fullDaysSinceEpoch = timeService.getFullDaysSinceEpoch(currentDate);
+    this._inputEpochString = '';
+    this.unixTimeConversion = null;
   }
 
   ngOnInit(): void {
@@ -60,5 +97,19 @@ export class TimeComponent implements OnInit {
 
   public dateStringForEpoch(): string {
     return this.timeService.getDateString(new Date(1970, 0, 1));
+  }
+
+
+  get inputEpochString(): string {
+    return this._inputEpochString;
+  }
+
+  set inputEpochString(value: string) {
+    this._inputEpochString = value;
+    try {
+      this.unixTimeConversion = new UnixTimeConversion(Number(value));
+    } catch (error) {
+      this.unixTimeConversion = null;
+    }
   }
 }

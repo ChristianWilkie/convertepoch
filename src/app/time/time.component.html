@@ -6,26 +6,49 @@
 
 </div>
 <div>
-  Seconds since epoch:
+  Current seconds since epoch:
   <h2>
     {{getCurrentSeconds()}} <app-copy copyText="{{getCurrentSeconds()}}"></app-copy>
   </h2>
 </div>
-<div>
-  Milliseconds since epoch:
-  <h2>
-    {{getCurrentSeconds() * 1000}} <app-copy copyText="{{getCurrentSeconds() * 1000}}"></app-copy>
-  </h2>
-</div>
-<div>
-  Microseconds since epoch:
-  <h2>
-    {{getCurrentSeconds() * 1000 * 1000}} <app-copy copyText="{{getCurrentSeconds() * 1000 * 1000}}"></app-copy>
-  </h2>
-</div>
-<div>
-  Days since epoch:
-  <h2>
-    {{fullDaysSinceEpoch}} <app-copy copyText="{{fullDaysSinceEpoch}}"></app-copy>
-  </h2>
+
+<mat-form-field appearance="fill">
+  <mat-label>Unix Timestamp to Convert</mat-label>
+  <input matInput placeholder="Example: 1663897093" [(ngModel)]="inputEpochString" type="number">
+  <button *ngIf="inputEpochString" matSuffix mat-icon-button aria-label="Clear" (click)="inputEpochString=''">
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-form-field>
+<div id="conversions" *ngIf="inputEpochString">
+  <div>
+    Date:
+    <h2>
+      {{unixTimeConversion?.date}}
+    </h2>
+  </div>
+  <div>
+    Seconds since epoch:
+    <h2>
+      {{unixTimeConversion?.secondsSinceEpoch}}<app-copy copyText="{{unixTimeConversion?.secondsSinceEpoch}}"></app-copy>
+    </h2>
+  </div>
+  <div>
+    Milliseconds since epoch:
+    <h2>
+      {{unixTimeConversion?.milliSecondsSinceEpoch}}<app-copy copyText="{{unixTimeConversion?.milliSecondsSinceEpoch}}"></app-copy>
+    </h2>
+  </div>
+  <div>
+    Microseconds since epoch:
+    <h2>
+      {{unixTimeConversion?.microSecondsSinceEpoch}} <app-copy copyText="{{unixTimeConversion?.microSecondsSinceEpoch}}"></app-copy>
+    </h2>
+  </div>
+  <div>
+    Days since epoch:
+    <h2>
+      {{unixTimeConversion?.daysSinceEpoch}} <app-copy copyText="{{unixTimeConversion?.daysSinceEpoch}}"></app-copy>
+    </h2>
+  </div>
+
 </div>
