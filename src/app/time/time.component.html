@@ -14,7 +14,7 @@
 
 <mat-form-field appearance="fill">
   <mat-label>Unix Timestamp to Convert</mat-label>
-  <input matInput placeholder="Example: 1663897093" [(ngModel)]="inputEpochString" type="number">
+  <input matInput placeholder="Example: 1663897093" [(ngModel)]="inputEpochString" type="number" matTooltip='This can be either seconds, milliseconds, or microseconds (input attempts to determine the correct unit).'>
   <button *ngIf="inputEpochString" matSuffix mat-icon-button aria-label="Clear" (click)="inputEpochString=''">
     <mat-icon>close</mat-icon>
   </button>
