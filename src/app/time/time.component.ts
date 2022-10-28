@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {TimeService} from '../time.service';
 import {MatInputModule} from '@angular/material/input';
+import {GenericMeasure, Measure, micro, milli, seconds} from 'safe-units';
 
-class UnixTimeConversion {
+
+
+export class UnixTimeConversion {
   private readonly DAY_IN_MILLISECONDS: number = 8.64 * (10 ** 7);
   /**
    * if the input timestamp > this value, assume the input is milliseconds and not seconds
@@ -11,6 +14,7 @@ class UnixTimeConversion {
   private readonly UNIX_TIMESTAMP_MICROSECONDS_SWITCH_VALUE: number = 1_000 * this.UNIX_TIMESTAMP_MS_SWITCH_VALUE;
   public date: Date;
   public secondsSinceEpoch: number;
+  public measureSecondsSinceEpoch: GenericMeasure<number, {time: '1'}>;
   public milliSecondsSinceEpoch: number;
   public microSecondsSinceEpoch: number;
   public daysSinceEpoch: number;
@@ -25,14 +29,18 @@ class UnixTimeConversion {
     this.milliSecondsSinceEpoch = 1000 * this.secondsSinceEpoch;
     this.date = new Date(this.milliSecondsSinceEpoch);
     this.microSecondsSinceEpoch = 1000 * this.milliSecondsSinceEpoch;
+    this.measureSecondsSinceEpoch = this.createMeasureSecondsSinceEpoch();
     this.daysSinceEpoch = this.getFullDaysSinceEpoch(this.date);
+  }
+
+  public createMeasureSecondsSinceEpoch(): GenericMeasure<number, {time: '1'}> {
+    return Measure.of(this.secondsSinceEpoch, seconds);
   }
 
   private getFullDaysSinceEpoch(date: Date): number {
     return Math.floor(date.getTime() / this.DAY_IN_MILLISECONDS);
   }
 }
-
 
 @Component({
   selector: 'app-current-time',
