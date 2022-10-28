@@ -2,6 +2,8 @@
 
 Site: [https://convertepoch.com](https://convertepoch.com)
 
+[![Build and Deploy](https://github.com/ChristianWilkie/convertepoch/actions/workflows/main.yml/badge.svg)](https://github.com/ChristianWilkie/convertepoch/actions/workflows/main.yml)
+
 Simple, open source site without advertising for some basic time conversions.
 
 ## Project Goal
